@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nafie develops the best quality website that serves for the long-term. Well-documented, clean, easy and elegant interface helps any non-technical clients.">
     <meta name="keywords" content="portfolio, agency, business, clean, company, corporate, creative, gallery, rtl, modern, photography, vue, vuejs, responsive, sass">
 
     <!-- title of the browser tab -->
-    <title>Nafie - HTML Portfolio Template</title>
+    <title>Florianspk</title>
 
     <!-- favicon -->
     <link rel="icon" href="assets/favicon.ico">
@@ -16,7 +15,6 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto&family=Saira+Stencil+One&text=Nafie&display=swap">
 
     <!-- css libraries file -->
     <link rel="stylesheet" href="styles/libraries.min.css">
@@ -56,8 +54,8 @@
         }">
           <div class="container">
             <!-- logo -->
-            <div class="logo" title="Nafie">
-              <h1><a href="index.html">Nafie</a></h1>
+            <div class="logo" title="Florianspk">
+              <h1><a href="index.html">Florianspk</a></h1>
             </div>
 
             <!-- nav links -->
@@ -67,76 +65,15 @@
               <ul class="nav-links">
                 <li v-for="link in navLinks" :key="link.url">
                   <a :href="link.url" @click="closeNavMenu">
-                    {{ link.title.en }}
+                    {{ link.title}}
                   </a>
                 </li>
               </ul>
 
-              <!-- menu content in big devices (hidden in mobile/tablet) -->
-              <div class="desktop-menu-content" tabindex="-1">
-                <div class="container">
-
-                  <!-- about us -->
-                  <div class="about-us">
-                    <p>
-                      I love making things simple, intuitive and expertly crafted!
-                    </p>
-                    <h4 class="block-title">
-                      Product is the vital essence of what i do, truly great product is born of meticulous planning and process. This is where i specialized!
-                    </h4>
-                  </div>
-
-                  <!-- contact info -->
-                  <ul class="contact-info row">
-                    <li class="col-lg-4">
-                      <h4 class="block-title">Email</h4>
-                      <ul>
-                        <li><a href="mailto:info@nafie.com">info@nafie.com</a></li>
-                        <li><a href="mailto:support@nafie.com">support@nafie.com</a></li>
-                      </ul>
-                    </li>
-                    <li class="col-lg-4">
-                      <h4 class="block-title">Address</h4>
-                      <ul>
-                        <li>
-                          941 saqrqorish Road, alandalos,
-                          <br>
-                          grnata, wa 47122-4194
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="col-lg-4">
-                      <h4 class="block-title">Phone</h4>
-                      <ul>
-                        <li><a href="tel:02966202290">(02) 966 202 290</a></li>
-                        <li><a href="tel:02966202291">(02) 966 202 291</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </nav>
 
             <!-- options icons -->
             <ul class="options-icons">
-
-              <!-- lang switcher button -->
-              <li class="lang-switcher">
-                <ul class="lang-switcher-menu">
-                  <li class="menu-item menu-item-has-children">
-                    <a href="#">En</a>
-
-                    <ul class="sub-menu">
-                      <li class="menu-item">
-                        <a href="index.html">En</a>
-                      </li>
-                      <li class="menu-item">
-                        <a href="rtl-index.html">ع</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
 
               <!-- theme switcher button -->
               <li class="theme-switcher">
@@ -167,10 +104,10 @@
                 <img src="assets/images/404.png" alt="404">
               </div>
               <div class="not-found-text">
-                <h2 class="title">Oops! That page can’t be found</h2>
-                <p class="desc">We're sorry, we couldn't find the page you requested.</p>
+                <h2 class="title">Oups ! Cette page ne peut pas être trouvée</h2>
+                <p class="desc">Nous sommes désolés, nous n'avons pas pu trouver la page que vous avez demandée.</p>
               </div>
-              <a href="index.html" class="btn btn-primary">Back to Home</a>
+              <a href="index.html" class="btn btn-primary">Retour a l'acueil</a>
             </div>
           </div>
         </div>
@@ -182,13 +119,12 @@
             <div class="row">
               <div class="col-lg-6">
                 <!-- logo -->
-                <div class="logo" title="Nafie">
-                  <h1><a href="index.html">Nafie</a></h1>
+                <div class="logo" title="Florianspk">
+                  <h1><a href="index.html">Florianspk</a></h1>
                 </div>
               </div>
               <div class="col-lg-6">
-                &copy; {{ copyrightDate }} Proudly Powered by
-                <a href="https://themeforest.net/user/webrouk/portfolio" target="_blank" rel="noopener">Webrouk</a>
+                &copy; {{ copyrightDate }}
               </div>
             </div>
           </div>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d27f1901-7376-496a-b978-d9380ea85c0a" name="dev">
+        <fileTransfer rootFolder="/home/florianspk/Project/florianspk_CV" accessType="SFTP" host="florianspk.fr" port="2200" sshConfigId="bdba6733-f609-44ae-a4e2-397e3a61bd2b" sshConfig="florianspk@florianspk.fr:2200 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

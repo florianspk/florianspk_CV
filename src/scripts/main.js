@@ -78,7 +78,7 @@ const app = Vue.createApp({
             toolsItems: [{
                 imgUrl: '../assets/images/logo/ajax.png', title: 'Ajax'
             }, {
-                imgUrl: '../assets/images/logo/github.png', title: 'Git (Github)'
+                imgUrl: '../assets/images/logo/github.svg', title: 'Git (Github)'
             }, {
                 imgUrl: '../assets/images/logo/npm.svg', title: 'Npm'
             }, {
