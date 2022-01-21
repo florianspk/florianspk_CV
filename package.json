@@ -1,0 +1,27 @@
+{
+  "name": "florianspk_CV",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "First Last florianspk@gmail.com",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "florianCV",
+    "florian spick",
+    "Florian Spick",
+    "Florian"
+  ],
+  "dependencies": {
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.2.0",
+    "express": "^4.16.1",
+    "nodemailer": "^6.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

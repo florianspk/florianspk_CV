@@ -35,15 +35,15 @@ const app = Vue.createApp({
 
             // list of nav links to loop through it
             navLinks: [{
-                url: 'index.html#hero', title: 'Accueil'
+                url: '#hero', title: 'Accueil'
             }, {
-                url: 'index.html#about', title: 'A propos'
+                url: '#about', title: 'A propos'
             }, {
-                url: 'index.html#skills', title: 'Mes competences'
+                url: '#skills', title: 'Mes competences'
             }, {
-                url: 'index.html#portfolio', title: 'Portfolio'
+                url: '#portfolio', title: 'Portfolio'
             }, {
-                url: 'index.html#contact', title: 'Contact'
+                url: '#contact', title: 'Contact'
             }],
 
             // flag to toggle between skills types in skills section
@@ -634,7 +634,6 @@ const app = Vue.createApp({
 
         // contact form validation
         contactFormValidation() {
-
             // contact form
             const contactForm = this.$refs.contactForm;
 
@@ -793,38 +792,38 @@ const app = Vue.createApp({
         },
 
         // send message from contact form
-        sendContactFormMessage(form) {
-            const url = form.getAttribute('action');
-            const formData = new FormData(form);
+        async sendContactFormMessage(form) {
+            const contactForm = this.$refs.contactForm;
 
+            // form controls
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const phone = contactForm.querySelector('input[name="phone"]').value;
+            const message = contactForm.querySelector('textarea').value;
+            const dataformjson = {name, email, phone, message}
             // start loading spinner
             this.startLoading();
-            console.log(formData)
             // send post request
-            fetch(url, {method: 'POST', body: formData})
-                .then(res => res.text())
-                .then(data => {
-                    if (data === 'success') {
-                        // show success message
-                        this.setNotify({className: 'success', msg: form.getAttribute('data-success-msg'), time: 5000});
+            const resp = await axios.post("/sendMail", dataformjson)
+            const data = resp.data
+            if (data === 'success') {
 
-                        // reset all form inputs
-                        form.reset();
+                // show success message
+                this.setNotify({className: 'success', msg: form.getAttribute('data-success-msg'), time: 5000});
 
-                        // remove inputs valid classes
-                        form.querySelectorAll('.valid').forEach(el => el.classList.remove('valid'));
+                // reset all form inputs
+                form.reset();
 
-                    } else if (data === 'error') {
-                        // show error message
-                        this.setNotify({className: 'danger', msg: form.getAttribute('data-err-msg'), time: 5000});
-                    }
+                // remove inputs valid classes
+                form.querySelectorAll('.valid').forEach(el => el.classList.remove('valid'));
 
-                    // end loading spinner
-                    this.endLoading();
+            } else if (data === 'error') {
+                // show error message
+                this.setNotify({className: 'danger', msg: form.getAttribute('data-err-msg'), time: 5000});
+            }
 
-                    console.log(data);
-                })
-                .catch(err => console.log(err));
+            // end loading spinner
+            this.endLoading();
         },
 
         // show messages by toast notifications
