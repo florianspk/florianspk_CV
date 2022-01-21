@@ -799,7 +799,7 @@ const app = Vue.createApp({
 
             // start loading spinner
             this.startLoading();
-
+            console.log(formData)
             // send post request
             fetch(url, {method: 'POST', body: formData})
                 .then(res => res.text())
