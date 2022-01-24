@@ -20,34 +20,39 @@ services:
       - "traefik.http.routers.florianspk_cv.tls=true"
       - "traefik.http.routers.florianspk_cv.tls.certresolver=leresolver"
   strapi:
-    container_name: strapi
     image: strapi/strapi
+    container_name: strapi_cv
+    networks:
+      - ${NETWORK}
     environment:
-      - NODE_ENV=production
-      - DATABASE_CLIENT=postgres
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=strapi
-      - DATABASE_USERNAME=strapi
-      - DATABASE_PASSWORD=strapi
-    ports:
-      - 1337:1337
+      PGID: ${PGID}
+      PUID: ${PUID}
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapi
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
     volumes:
       - ./app:/srv/app
+    ports:
+      - '1337:1337'
     depends_on:
-      - db
-    command: 'strapi start'
+      - postgres
 
-  db:
-    container_name: postgres
+  postgres:
     image: postgres
-    restart: always
-    volumes:
-      - ./app/strapi_cv/database:/var/lib/postgresql/data
+    container_name: postgres_cv
+    networks:
+      - ${NETWORK}
     environment:
+      PGID: ${PGID}
+      PUID: ${PUID}
+      POSTGRES_DB: strapi
       POSTGRES_USER: strapi
       POSTGRES_PASSWORD: strapi
-      POSTGRES_DB: strapi
+    volumes:
+      - ./data:/var/lib/postgresql/data
 
 networks:
   traefik_network:

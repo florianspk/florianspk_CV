@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "global_informations",
+  "info": {
+    "name": "Global_information",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "first_title": {
+      "type": "string"
+    },
+    "image_presentation": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "customer": {
+      "type": "integer"
+    },
+    "url_twitter": {
+      "type": "string"
+    },
+    "url_linkedin": {
+      "type": "string"
+    }
+  }
+}

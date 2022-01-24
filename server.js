@@ -6,6 +6,7 @@ let app = express();
 const router = express.Router();
 const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
+const {request} = require("express");
 // Constants
 const PORT = 8282;
 const HOST = '0.0.0.0';
@@ -34,9 +35,9 @@ router.post("/sendMail",async function (req,res,next ){
                 name: req.body.name,
                 address: req.body.email
             },
-            to: "florian@florianspk.fr",
+            to: "florianspk@gmail.com",
             subject: "Nouveau message de :" + req.body.name ,
-            text: req.body.msg,
+            text: req.body.message,
         });
         console.log(info)
         if (info.messageId){
@@ -58,3 +59,4 @@ app.use(express.static(path));
 app.use("/", router);
 
 app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);

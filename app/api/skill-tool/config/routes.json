@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/skill-tools",
+      "handler": "skill-tool.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/skill-tools/count",
+      "handler": "skill-tool.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/skill-tools/:id",
+      "handler": "skill-tool.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/skill-tools",
+      "handler": "skill-tool.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/skill-tools/:id",
+      "handler": "skill-tool.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/skill-tools/:id",
+      "handler": "skill-tool.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

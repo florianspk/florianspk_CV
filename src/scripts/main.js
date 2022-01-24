@@ -3,37 +3,19 @@
 // -------------------------------------
 const app = Vue.createApp({
     data() {
+
         return {
-            // the date my career started (change to yours)
             careerStartDate: 2019,
-
-            // the date copyright started (change to yours)
-            copyrightStartDate: 2021,
-
-            // for the template theme
+            copyrightStartDate: 2022,
             appTheme: 'light_theme', savedTheme: null,
-
-            // flag to toggle the preloader
             isPreloading: true,
-
-            // toast notifications array
             notifications: [],
-
-            // manage loading spinner status
-            ajaxLoading: [],
-
-            // for minimizing the header on scrolling down
+            ajaxLowading: [],
             startMinimizingHeaderAt: 100, isHeaderBig: true, // for toggling the header on scrolling down
             lastScrollPosition: 0, isHeaderHidden: false, // for scroll to top button
             startShowingScrollTopBtnAt: 600, isScrollTopBtnDisplayed: false,
-
-            // flag to toggle focus style class
             isAnyFocus: false,
-
-            // flag to toggle nav menu
             isNavMenuOpen: false,
-
-            // list of nav links to loop through it
             navLinks: [{
                 url: '#hero', title: 'Accueil'
             }, {
@@ -45,11 +27,7 @@ const app = Vue.createApp({
             }, {
                 url: '#contact', title: 'Contact'
             }],
-
-            // flag to toggle between skills types in skills section
             skillsType: '',
-
-            // list of skills items to loop through it
             skillsItems: [{
                 imgUrl: '../assets/images/logo/html-5.svg', title: 'HTML5'
             }, {
@@ -73,8 +51,6 @@ const app = Vue.createApp({
             }, {
                 imgUrl: '../assets/images/logo/java.svg', title: 'Java'
             }],
-
-            // list of tools items to loop through it
             toolsItems: [{
                 imgUrl: '../assets/images/logo/ajax.png', title: 'Ajax'
             }, {
@@ -92,8 +68,6 @@ const app = Vue.createApp({
             }, {
                 imgUrl: '../assets/images/logo/office-365.svg', title: 'Office 365'
             }],
-
-            // list of experience items to loop through it
             experienceItems: [{
                 date: '2009',
                 companyName: 'Google Inc.',
@@ -133,20 +107,10 @@ const app = Vue.createApp({
                 desc: 'Collaborate with creative and development teams on the execution of ideas.'
 
             }, {}, {}],
-
-            // current page of portfolio items
             portfolioItemsPage: 1,
-
-            // portfolio items per page
             itemsPerPage: 7,
-
-            // portfolio items filter by type
             filters: ['All', 'HTML', 'Angular', 'Vue'], currentFilter: 'All',
-
-            // portfolio archive name
             portfolioArchiveName: '',
-
-            // list of portfolio items to loop through it
             allPortfolioItems: [{
                 id: 1,
                 url: 'single-portfolio.html?id=1',
@@ -303,45 +267,36 @@ const app = Vue.createApp({
                     }
                 }
             }].reverse(),
-
-            // viewed portfolio items
             portfolioItems: [],
-
-            // list of testimonials items to loop through it
-            testimonialsItems: [{
-                imgUrl: '../assets/images/avatar/avatar-h.png',
-                quoteContent: 'Nafie simply provides amazing web development service. Their team is extremely professional and the easiest to meet I have ever worked with. I would recommend Nafie to anyone.',
-                quoteAuthor: 'Terrell Grimes',
-                jobTitle: 'Photographer'
-            }, {
-                imgUrl: '../assets/images/avatar/avatar-f.png',
-                quoteContent: 'Nafie simply provides amazing web development service. Their team is extremely professional and the easiest to meet I have ever worked with. I would recommend Nafie to anyone.',
-                quoteAuthor: 'Terrell Grimes',
-                jobTitle: 'Photographer'
-            }]
+            testimonialsItems: []
         }
     }, created() {
-        // get a theme to use
         this.getAppTheme();
-    }, mounted() {
+    },
+    mounted() {
         if (window.innerWidth >= 992) {
-            // initialize circle cursor
             this.initCircleCursor();
-
-            // apply pan effect hero image
             this.heroImgPanEffect();
-
-            // initialize VanillaTilt library in portfolio section
             this.initializeTilt();
         }
-
-        // nav menu tab trap
+        //Fetch Data
+        const STRAPI_ENDPOINT = "http://192.168.1.75:1337"
+        axios.get(`${STRAPI_ENDPOINT}/testimonials`).then((response) => {
+            for (let i = 0; i < response.data.length; i++) {
+                const res = {
+                    imgUrl: STRAPI_ENDPOINT + response.data[i].imgUrl.url,
+                    quoteContent: response.data[i].quoteContent,
+                    quoteAuthor: response.data[i].quoteAuthor,
+                    jobTitle: response.data[i].jobTitle
+                }
+                this.testimonialsItems.push({...res})
+            }
+        }).catch((error) => {
+            console.warn(error.message)
+        }).finally(() => {
+            this.isPreloading = false
+        })
         this.navMenuTabTrap();
-
-        // hide the preloader screen after loading
-        window.addEventListener('load', () => this.isPreloading = false);
-
-        // scrolling options
         this.scrollingOptions();
         document.addEventListener('scroll', () => this.scrollingOptions());
 
@@ -393,7 +348,7 @@ const app = Vue.createApp({
         // get a theme to use
         getAppTheme() {
             // get the saved theme from the localStorage
-            const storageSavedTheme = localStorage.getItem('nafieSavedTheme');
+            const storageSavedTheme = localStorage.getItem('cvSavedTheme');
 
             // Check to see if there a saved theme
             if (storageSavedTheme) {
@@ -419,7 +374,7 @@ const app = Vue.createApp({
             }
 
             // save the new theme in the localStorage
-            localStorage.setItem('nafieSavedTheme', this.savedTheme);
+            localStorage.setItem('cvSavedTheme', this.savedTheme);
         },
 
         // detect the theme changes
@@ -427,7 +382,7 @@ const app = Vue.createApp({
             (this.savedTheme === 'light_theme') ? this.savedTheme = 'dark_theme' : this.savedTheme = 'light_theme';
 
             // save the new theme in the localStorage
-            localStorage.setItem('nafieSavedTheme', this.savedTheme);
+            localStorage.setItem('cvSavedTheme', this.savedTheme);
         },
 
         // toggle nav menu
@@ -506,7 +461,6 @@ const app = Vue.createApp({
         // apply pan effect hero image
         heroImgPanEffect() {
             const parent = this.$refs.heroSection;
-
             // return if disabled
             if (!parent || !parent.getAttribute('data-paneffect')) {
                 return;
@@ -523,6 +477,7 @@ const app = Vue.createApp({
 
                 layer1.setAttribute('style', `transform-origin: ${x}vw ${y}vh;`);
                 layer2.setAttribute('style', `transform-origin: ${x}vw ${y}vh;`);
+
             });
         },
 
@@ -531,14 +486,14 @@ const app = Vue.createApp({
             const scrollPosition = window.pageYOffset;
 
             // check for current scroll position to minimize the header
-            this.isHeaderBig = (scrollPosition >= this.startMinimizingHeaderAt) ? false : true;
+            this.isHeaderBig = (scrollPosition < this.startMinimizingHeaderAt);
 
             // check for current scroll position to toggle the header
-            this.isHeaderHidden = ((scrollPosition > 100) && (scrollPosition > this.lastScrollPosition)) ? true : false;
+            this.isHeaderHidden = ((scrollPosition > 100) && (scrollPosition > this.lastScrollPosition));
             this.lastScrollPosition = scrollPosition;
 
             // check for current scroll position to show the scrollTop button
-            this.isScrollTopBtnDisplayed = (scrollPosition >= this.startShowingScrollTopBtnAt) ? true : false;
+            this.isScrollTopBtnDisplayed = (scrollPosition >= this.startShowingScrollTopBtnAt);
         },
 
         // scroll to top
@@ -546,33 +501,23 @@ const app = Vue.createApp({
             window.scroll({top: 0, behavior: 'smooth'});
         },
 
-        // initialize the first displayed type of skills
         initSkillsFirstType() {
             const skillsSwitchBtn = this.$refs.skillsSwitchBtn;
-
-            // return if disabled
             if (!skillsSwitchBtn) {
                 return;
             }
-
             this.skillsType = skillsSwitchBtn.querySelector('input').value;
         },
 
-        // initialize VanillaTilt library in portfolio section
         initializeTilt() {
             const portfolioItems = this.$refs.portfolioItems;
-
-            // return if disabled
             if (!portfolioItems) {
                 return;
             }
-
             VanillaTilt.init(portfolioItems.querySelectorAll('.portfolio-item'), {
                 max: 8, speed: 400, glare: true, 'max-glare': 0.3
             });
         },
-
-        // get portfolio items
         getPortfolioItems() {
             const itemsArr = this.allPortfolioItems
                 .filter(item => {
@@ -599,18 +544,11 @@ const app = Vue.createApp({
                 })
                 .slice(this.filteredPortfolioItems.length, this.portfolioItemsPage * this.itemsPerPage);
 
-            // check if have works or not
             if (itemsArr.length) {
                 this.portfolioItems.push(...itemsArr);
-
-                // initialize VanillaTilt for new items
                 setTimeout(() => this.portfolioItemsPage > 1 && this.initializeTilt(), 0);
-
                 this.portfolioItemsPage++;
-
             } else {
-
-                // show message "No works" to the user
                 this.setNotify({
                     className: 'danger', msg: this.$refs.portfolioItems.getAttribute('data-no-works-msg'), time: 3000
                 });
@@ -892,7 +830,7 @@ const app = Vue.createApp({
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
 
-            return this.allPortfolioItems.find(item => item.id == id);
+            return this.allPortfolioItems.find(item => item.id === id);
         },
 
         // get the total years of copyright

@@ -11,7 +11,7 @@
     <title>Florianspk - Site Portfolio</title>
 
     <!-- favicon -->
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="icon" href="../../vue_florianspk_cv/public/favicon.ico">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +24,10 @@
     <link rel="stylesheet" href="styles/bootstrap.css">
 
     <!-- main style file -->
-    <link rel="stylesheet"  href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js" integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+            integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <div id="app">
@@ -120,13 +122,13 @@
                 <ul class="options-icons">
 
                     <!-- lang switcher button -->
-                    <!--              <li class="lang-switcher">-->
-                    <!--                <ul class="lang-switcher-menu">-->
-                    <!--                  <li class="menu-item menu-item-has-children">-->
-                    <!--                    <a href="#">FR</a>-->
-                    <!--                  </li>-->
-                    <!--                </ul>-->
-                    <!--              </li>-->
+<!--                                  <li class="lang-switcher">-->
+<!--                                    <ul class="lang-switcher-menu">-->
+<!--                                      <li class="menu-item menu-item-has-children">-->
+<!--                                        <a href="#">FR</a>-->
+<!--                                      </li>-->
+<!--                                    </ul>-->
+<!--                                  </li>-->
 
                     <!-- theme switcher button -->
                     <li class="theme-switcher">
@@ -150,7 +152,7 @@
         <!-- end of header -->
 
         <!-- start of hero section -->
-        <div id="hero" class="hero-section" rel="heroSection" data-paneffect="true">
+        <div id="hero" class="hero-section" ref="heroSection" data-paneffect="true">
             <div class="hero-img">
                 <div class="layer" v-clone>
                     <img src="assets/images/bitmoji/presentation2.png" alt="florianspk">
@@ -256,7 +258,7 @@
                         <div class="text-box-inline">
                             <span class="subtitle">A propos de moi</span>
                             <h2>
-                                Besoin de nouvelle solutions techniques ?
+                                Besoin de nouvelles solutions techniques ?
                                 <br>
                                 Je peux vous aider !
                             </h2>
@@ -267,8 +269,8 @@
                                 Je suis toujours curieux d'apprendre de nouvelles compétences, de nouveaux outils et de
                                 nouveaux concepts. En plus de travailler sur divers projets solo full stack, j'ai
                                 travaillé avec des équipes créatives, ce qui implique des stand-ups et des
-                                communications quotidiennes avec de nombreuses société mais également la gestion de
-                                projet pour tout mes projets. </p>
+                                communications quotidiennes avec de nombreuses sociétés mais également la gestion de
+                                projet pour tous mes projets. </p>
                             <div class="btns-container">
                                 <a href="#contact" class="btn btn-primary">Me contacter</a>
                                 <a download href="assets/CV/CV_Spick_Florian.pdf" class="btn btn-outline-light">Télécharger
@@ -296,8 +298,8 @@
                                 en programmation ?
                             </h2>
                             <p>
-                                Je mets en place et developpe des applications qui permettes de faciliter votre
-                                quotidien mais je develop également des projets personels pour apprendre d'avantages sur
+                                Je mets en place et developpe des applications qui permettent de faciliter votre
+                                quotidien mais je développe également des projets personnels pour apprendre davantage sur
                                 les nouvelles technologies
                             </p>
                             <div ref="skillsSwitchBtn" class="toggle-switch-btn">
@@ -444,39 +446,44 @@
         <!--        </div>-->
         <!-- end of portfolio section -->
 
-        <!-- start of testimonials section -->
-        <!--        <div id="testimonials" class="testimonials-section section" tabindex="-1">-->
-        <!--          <div class="container">-->
-        <!--            <div class="section-title">-->
-        <!--              <span class="subtitle">Commentaire</span>-->
-        <!--              <h2 class="title">-->
-        <!--                Un petit commentaire ? -->
-        <!--              </h2>-->
-        <!--            </div>-->
-        <!--          </div>-->
+        <!--         start of testimonials section-->
+        <div id="testimonials" class="testimonials-section section" tabindex="-1">
+            <div class="container">
+                <div class="section-title">
+                    <span class="subtitle">Commentaire</span>
+                    <h2 class="title">
+                        Un petit commentaire ?
+                    </h2>
+                </div>
+            </div>
+            <div class="section-content">
+                <ul class="testimonials-items" v-staggerdelay="500">
+                    <li class="has-ultimate-tooltip"
+                        tabindex="0"
+                        v-for="item in testimonialsItems"
+                        :key="item.quoteAuthor">
+                        <div class="testimonials-item">
+                            <div class="testimonial-author-img">
+                                <img :src="item.imgUrl" :alt="item.quoteAuthor">
+                            </div>
+                            <div class="ultimate-tooltip">
+                                <p>{{ item.quoteContent }}</p>
+                                <h4 class="ultimate-tooltip-title">{{ item.quoteAuthor }}</h4>
+                                <h5 class="ultimate-tooltip-subtitle">{{ item.jobTitle }}</h5>
+                            </div>
+                            <div class="ultimate-tooltip-arrow"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="section-title">
 
-        <!--          <div class="section-content">-->
-        <!--            <ul class="testimonials-items" v-staggerdelay="500">-->
-        <!--              <li class="has-ultimate-tooltip"-->
-        <!--                tabindex="0"-->
-        <!--                v-for="item in testimonialsItems"-->
-        <!--                :key="item.quoteAuthor">-->
-        <!--                <div class="testimonials-item">-->
-        <!--                  <div class="testimonial-author-img">-->
-        <!--                    <img :src="item.imgUrl || 'assets/images/testimonials/anonymous-user.png'" :alt="item.quoteAuthor">-->
-        <!--                  </div>-->
-        <!--                  <div class="ultimate-tooltip">-->
-        <!--                    <p>{{ item.quoteContent }}</p>-->
-        <!--                    <h4 class="ultimate-tooltip-title">{{ item.quoteAuthor }}</h4>-->
-        <!--                    <h5 class="ultimate-tooltip-subtitle">{{ item.jobTitle }}</h5>-->
-        <!--                  </div>-->
-        <!--                  <div class="ultimate-tooltip-arrow"></div>-->
-        <!--                </div>-->
-        <!--              </li>-->
-        <!--            </ul>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--        &lt;!&ndash; end of testimonials section &ndash;&gt;-->
+                </div>
+            </div>
+        </div>
+
+        <!-- end of testimonials section -->
 
         <div class="testimonials-section section" tabindex="-1">
             <div class="container">
@@ -485,7 +492,9 @@
                         &#128679; Site en construction &#128679;
                         </br>
                     </h2>
-                    <img src="assets/images/undraw_programming_re_kg9v.svg" alt="En construction">
+                    <div class="hero-img">
+                            <img src="assets/images/undraw_programming_re_kg9v.svg" alt="En construction">
+                    </div>
                 </div>
             </div>
         </div>
@@ -534,7 +543,7 @@
                                 <div>
                                     <strong>Email:</strong>
                                     <ul>
-                                        <li><a href="mailto:info@nafie.com">florianspk@florianspk.fr</a></li>
+                                        <li><a href="mailto:florian@florianspk.fr">florian@florianspk.fr</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -693,11 +702,9 @@
         </div>
     </div>
 </div>
-
+</body>
 <!-- js plugins file -->
 <script src="scripts/plugins.min.js"></script>
-
 <!-- main script file -->
 <script src="scripts/main.js"></script>
-</body>
 </html>

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skill_tool_sections",
+  "info": {
+    "name": "Skill_Tool_Section",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "skill_tools": {
+      "collection": "skill-tool"
+    }
+  }
+}
