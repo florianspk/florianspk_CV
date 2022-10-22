@@ -10,7 +10,7 @@ const app = Vue.createApp({
             appTheme: 'light_theme', savedTheme: null,
             isPreloading: true,
             notifications: [],
-            ajaxLowading: [],
+            ajaxLoading: [],
             startMinimizingHeaderAt: 100, isHeaderBig: true, // for toggling the header on scrolling down
             lastScrollPosition: 0, isHeaderHidden: false, // for scroll to top button
             startShowingScrollTopBtnAt: 600, isScrollTopBtnDisplayed: false,
@@ -50,6 +50,8 @@ const app = Vue.createApp({
                 imgUrl: '../assets/images/logo/arduino.svg', title: 'Arduino'
             }, {
                 imgUrl: '../assets/images/logo/java.svg', title: 'Java'
+            },{
+                imgUrl: '../assets/images/logo/php.svg', title: 'PHP'
             }],
             toolsItems: [{
                 imgUrl: '../assets/images/logo/ajax.png', title: 'Ajax'
@@ -69,44 +71,32 @@ const app = Vue.createApp({
                 imgUrl: '../assets/images/logo/office-365.svg', title: 'Office 365'
             }],
             experienceItems: [{
-                date: '2009',
-                companyName: 'Google Inc.',
-                jobTitle: 'Front-End Developer',
-                desc: 'Monitored technical aspects of the front-end delivery for projects.',
+                date: '2018',
+                companyName: 'Centre aéré Angevillers',
+                jobTitle: 'Animateur',
+                desc: 'Lors de mes vacances j\'ai travaillé en tant qu\'animateur pendant 1 mois',
             }, {
-                date: '2011',
+                date: '2019',
+                companyName: 'Finance ',
+                jobTitle: 'Full Stack Developer',
+                desc: 'Collaborate with creative and development teams on the execution of ideas.',
+            },{
+                date: '2019',
                 companyName: 'Facebook Inc.',
                 jobTitle: 'Full Stack Developer',
                 desc: 'Collaborate with creative and development teams on the execution of ideas.',
             }, {
-                date: '2013',
+                date: '2020',
                 companyName: 'Envato Inc.',
                 jobTitle: 'UI/UX Developer',
                 desc: 'Converted Photoshop layouts to web pages using HTML, CSS, and JavaScript.',
 
             }, {
-                date: '2015',
+                date: '2020',
                 companyName: 'Google Inc.',
                 jobTitle: 'Front-End Developer',
                 desc: 'Monitored technical aspects of the front-end delivery for projects.',
-            }, {
-                date: '2017',
-                companyName: 'Facebook Inc.',
-                jobTitle: 'Full Stack Developer',
-                desc: 'Collaborate with creative and development teams on the execution of ideas.',
-
-            }, {
-                date: '2019',
-                companyName: 'Google Inc.',
-                jobTitle: 'Front-End Developer',
-                desc: 'Monitored technical aspects of the front-end delivery for projects.',
-            }, {
-                date: '2021',
-                companyName: 'Facebook Inc.',
-                jobTitle: 'Full Stack Developer',
-                desc: 'Collaborate with creative and development teams on the execution of ideas.'
-
-            }, {}, {}],
+            }],
             portfolioItemsPage: 1,
             itemsPerPage: 7,
             filters: ['All', 'HTML', 'Angular', 'Vue'], currentFilter: 'All',
@@ -279,9 +269,8 @@ const app = Vue.createApp({
             this.heroImgPanEffect();
             this.initializeTilt();
         }
-        //Fetch Data
-        const STRAPI_ENDPOINT = "http://192.168.1.75:1337"
-        axios.get(`${STRAPI_ENDPOINT}/testimonials`).then((response) => {
+        const STRAPI_ENDPOINT = "http://127.0.0.1:1337"
+        fetch(`${STRAPI_ENDPOINT}/testimonials`).then((response) => {
             for (let i = 0; i < response.data.length; i++) {
                 const res = {
                     imgUrl: STRAPI_ENDPOINT + response.data[i].imgUrl.url,
@@ -289,13 +278,15 @@ const app = Vue.createApp({
                     quoteAuthor: response.data[i].quoteAuthor,
                     jobTitle: response.data[i].jobTitle
                 }
-                this.testimonialsItems.push({...res})
+
+                this.testimonialsItems.push(res)
             }
         }).catch((error) => {
             console.warn(error.message)
         }).finally(() => {
             this.isPreloading = false
         })
+        //Fetch Data
         this.navMenuTabTrap();
         this.scrollingOptions();
         document.addEventListener('scroll', () => this.scrollingOptions());
@@ -477,7 +468,6 @@ const app = Vue.createApp({
 
                 layer1.setAttribute('style', `transform-origin: ${x}vw ${y}vh;`);
                 layer2.setAttribute('style', `transform-origin: ${x}vw ${y}vh;`);
-
             });
         },
 

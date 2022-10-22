@@ -28,6 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
             integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <div id="app">
@@ -35,7 +36,6 @@
          :class="[savedTheme, {'enable-focus-style': isAnyFocus}]"
          @click="isAnyFocus = false"
          @keyup.tab="isAnyFocus = true">
-
         <div class="circle-cursor circle-cursor-outer" ref="circleCursorOuter"></div>
         <div class="circle-cursor circle-cursor-inner" ref="circleCursorInner"></div>
 
@@ -59,7 +59,7 @@
             <div class="container">
                 <!-- logo -->
                 <div class="logo" title="florianspk">
-                    <h1><a href="index.html">Florianspk</a></h1>
+                    <h1><a href="/">Florianspk</a></h1>
                 </div>
 
                 <!-- nav links -->
@@ -97,22 +97,6 @@
                                         <li><a href="mailto:florianspk@florianspk.fr">florianspk@florianspk.fr</a></li>
                                     </ul>
                                 </li>
-                                <li class="col-lg-4">
-                                    <h4 class="block-title">Address</h4>
-                                    <ul>
-                                        <li>
-                                            5 rue Maréchal Gallieni
-                                            <br>
-                                            Nancy, 54000
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col-lg-4">
-                                    <h4 class="block-title">Phone</h4>
-                                    <ul>
-                                        <li><a href="tel:0628265637">(+33) 628 265 637</a></li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -122,13 +106,13 @@
                 <ul class="options-icons">
 
                     <!-- lang switcher button -->
-<!--                                  <li class="lang-switcher">-->
-<!--                                    <ul class="lang-switcher-menu">-->
-<!--                                      <li class="menu-item menu-item-has-children">-->
-<!--                                        <a href="#">FR</a>-->
-<!--                                      </li>-->
-<!--                                    </ul>-->
-<!--                                  </li>-->
+                    <!--                                  <li class="lang-switcher">-->
+                    <!--                                    <ul class="lang-switcher-menu">-->
+                    <!--                                      <li class="menu-item menu-item-has-children">-->
+                    <!--                                        <a href="#">FR</a>-->
+                    <!--                                      </li>-->
+                    <!--                                    </ul>-->
+                    <!--                                  </li>-->
 
                     <!-- theme switcher button -->
                     <li class="theme-switcher">
@@ -264,7 +248,7 @@
                             </h2>
                             <p>
                                 Bonjour, je m'appelle Spick Florian et je suis un développeur passionné par la création
-                                et le deploiement de technologies qui facilite le développement des entreprises. J'aime
+                                et le déploiement de technologies qui facilite le développement des entreprises. J'aime
                                 le processus de transformation des idées en réalité en utilisant des solutions neuves.
                                 Je suis toujours curieux d'apprendre de nouvelles compétences, de nouveaux outils et de
                                 nouveaux concepts. En plus de travailler sur divers projets solo full stack, j'ai
@@ -273,7 +257,7 @@
                                 projet pour tous mes projets. </p>
                             <div class="btns-container">
                                 <a href="#contact" class="btn btn-primary">Me contacter</a>
-                                <a download href="assets/CV/CV_Spick_Florian.pdf" class="btn btn-outline-light">Télécharger
+                                <a  href="assets/CV/CV_Spick_Florian.pdf" target="_blank" class="btn btn-outline-light">Télécharger
                                     mon CV</a>
                             </div>
                         </div>
@@ -293,13 +277,14 @@
                         <div class="text-box-inline">
                             <span class="subtitle">Mes Compétences</span>
                             <h2>
-                                Que comprennent mes compétences
+                                Qu'elles sont mes compétences
                                 <br>
-                                en programmation ?
+                                en informatique ?
                             </h2>
                             <p>
                                 Je mets en place et developpe des applications qui permettent de faciliter votre
-                                quotidien mais je développe également des projets personnels pour apprendre davantage sur
+                                quotidien mais je développe également des projets personnels pour apprendre davantage
+                                sur
                                 les nouvelles technologies
                             </p>
                             <div ref="skillsSwitchBtn" class="toggle-switch-btn">
@@ -345,50 +330,49 @@
         <!-- end of skills section -->
 
         <!-- start of experience section -->
-        <!--        <div id="experience" class="experience-section section" tabindex="-1">-->
-        <!--          <div class="container">-->
-        <!--            <div class="section-content row">-->
+                <div id="experience" class="experience-section section" tabindex="-1">
+                  <div class="container">
+                    <div class="section-content row">
 
-        <!--              &lt;!&ndash; timeline &ndash;&gt;-->
-        <!--              <div class="experience-timeline col-lg-6">-->
-        <!--                <ul class="outer-ul">-->
-        <!--                  <li class="outer-li" v-for="(group, index) in experienceChunks" :key="index">-->
-        <!--                    <ul class="inner-ul">-->
-        <!--                      <li class="has-ultimate-tooltip"-->
-        <!--                        tabindex="0"-->
-        <!--                        v-for="item in group">-->
-        <!--                        <template v-if="Object.keys(item).length > 0">-->
-        <!--                          <h3>{{ item.date }}</h3>-->
-        <!--                          <div class="ultimate-tooltip">-->
-        <!--                            <h4 class="ultimate-tooltip-title">{{ item.companyName }}</h4>-->
-        <!--                            <h5 class="ultimate-tooltip-subtitle">{{ item.jobTitle }}</h5>-->
-        <!--                            <p>{{ item.desc }}</p>-->
-        <!--                          </div>-->
-        <!--                          <div class="ultimate-tooltip-arrow"></div>-->
-        <!--                        </template>-->
-        <!--                      </li>-->
-        <!--                    </ul>-->
-        <!--                  </li>-->
-        <!--                </ul>-->
-        <!--              </div>-->
+                      <!-- timeline -->
+                      <div class="experience-timeline col-lg-6">
+                        <ul class="outer-ul">
+                          <li class="outer-li" v-for="(group, index) in experienceChunks" :key="index">
+                            <ul class="inner-ul">
+                              <li class="has-ultimate-tooltip"
+                                tabindex="0"
+                                v-for="item in group">
+                                <template v-if="Object.keys(item).length > 0">
+                                  <h3>{{ item.date }}</h3>
+                                  <div class="ultimate-tooltip">
+                                    <h4 class="ultimate-tooltip-title">{{ item.companyName }}</h4>
+                                    <h5 class="ultimate-tooltip-subtitle">{{ item.jobTitle }}</h5>
+                                    <p>{{ item.desc }}</p>
+                                  </div>
+                                  <div class="ultimate-tooltip-arrow"></div>
+                                </template>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
 
-        <!--              &lt;!&ndash; text box &ndash;&gt;-->
-        <!--              <div class="experience-text col-lg-6">-->
-        <!--                <div class="text-box-inline">-->
-        <!--                  <span class="subtitle">experience</span>-->
-        <!--                  <h2>-->
-        <!--                    {{ experienceYears }}+ Years of Experience-->
-        <!--                    <br>-->
-        <!--                    With Many Awards!-->
-        <!--                  </h2>-->
-        <!--                  <p>-->
-        <!--                    I have been developing sites and apps for {{ experienceYears }} years and i know for sure the main trends and directions of modern design, I have been a visionary and a reliable software engineering partner for world-class brands. You will get a decent result as you expect.-->
-        <!--                  </p>-->
-        <!--                </div>-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </div>-->
+                      <!-- text box -->
+                      <div class="experience-text col-lg-6">
+                        <div class="text-box-inline">
+                          <span class="subtitle">experience</span>
+                          <h2>
+                            {{ experienceYears }}+ ans d'expérience
+                            <br>
+                            Dans beaucoup de domaine
+                          </h2>
+                          <p>
+                              Je développe des sites et des applications depuis {{ experienceYears }} ans et j'essaye de me tenir a gout du jour dans les technologies que j'utilise. J'ai également guidée et developper des solutions adaptée pour de nombreuses entreprise.                         </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         <!-- end of experience section -->
 
         <!-- start of portfolio section -->
@@ -493,7 +477,7 @@
                         </br>
                     </h2>
                     <div class="hero-img">
-                            <img src="assets/images/undraw_programming_re_kg9v.svg" alt="En construction">
+                        <img src="assets/images/undraw_programming_re_kg9v.svg" alt="En construction">
                     </div>
                 </div>
             </div>
@@ -522,22 +506,6 @@
 
                         <!-- contact info -->
                         <ul class="contact-info">
-                            <li>
-                                <img src="assets/images/icons/address.png" alt="Address">
-                                <div>
-                                    <strong>Address:</strong>
-                                    5 rue Marechal Gallieni
-                                </div>
-                            </li>
-                            <li>
-                                <img src="assets/images/icons/phone.png" alt="Phone">
-                                <div>
-                                    <strong>Phone:</strong>
-                                    <ul>
-                                        <li><a href="tel:0628265637" class="ltr-dir">(+33) 628 265 637</a></li>
-                                    </ul>
-                                </div>
-                            </li>
                             <li>
                                 <img src="assets/images/icons/email.png" alt="Email">
                                 <div>
@@ -659,7 +627,7 @@
                     <div class="col-lg-6">
                         <!-- logo -->
                         <div class="logo" title="Florianspk">
-                            <h1><a href="index.html">Florianspk</a></h1>
+                            <h1><a href="/">Florianspk</a></h1>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -702,9 +670,9 @@
         </div>
     </div>
 </div>
-</body>
 <!-- js plugins file -->
 <script src="scripts/plugins.min.js"></script>
 <!-- main script file -->
 <script src="scripts/main.js"></script>
+</body>
 </html>
