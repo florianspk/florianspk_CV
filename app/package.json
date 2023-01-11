@@ -21,7 +21,7 @@
     "strapi-plugin-upload": "3.6.8",
     "strapi-plugin-i18n": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
-    "knex": "0.21.18",
+    "knex": "2.4.0",
     "pg": "8.5.1"
   },
   "author": {
